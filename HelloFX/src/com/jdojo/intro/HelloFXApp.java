@@ -1,10 +1,14 @@
 package com.jdojo.intro;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class HelloFXApp extends Application {
 
@@ -33,7 +37,21 @@ public class HelloFXApp extends Application {
 		stage.setScene(scene);
 		stage.setTitle("Aplicación JavaFX con unha escena");
 		stage.show();
-			
-	}
 
+		// Crear un boton con el texto "Salir"
+		Button exitBtn = new Button("Exit");
+
+		// Usando una expresión lambda
+		exitBtn.setOnAction(e -> Platform.exit());
+
+		// Usando unha clase anónima
+		exitBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent e) {
+				Platform.exit();
+			}
+
+		});
+
+	}
 }
