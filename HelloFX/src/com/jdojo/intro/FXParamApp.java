@@ -28,8 +28,10 @@ public class FXParamApp extends Application {
 		Group root = new Group(ta);
 		
 		stage.setScene(new Scene(root));
-		stage.setTitle("Parámetros da aplicación");
+		stage.setTitle("Parámetros de la aplicación");
 		stage.show();
+		
+		
 	}
 
 	public static void main(String[] args) {
