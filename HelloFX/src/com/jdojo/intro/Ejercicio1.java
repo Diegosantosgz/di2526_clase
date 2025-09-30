@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Ejercicio1 extends Application {
 
 	public void start(Stage stage) {
-		// Creamos un Group para el nodo raíz
+		// Creamos un Group para el nodo raíz.
 		Group gr = new Group();
 		// Creamos una escena en la que le pasamos los el nodo,la altura y la anchura en pixeles
 		Scene scene = new Scene(gr, 400, 300);

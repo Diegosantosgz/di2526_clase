@@ -37,7 +37,7 @@ public class Ejercicio3 extends Application {
         stage.setTitle("Click Me!");
         // Creamos la escena
         stage.setScene(scene);
-        // Mostramos el escenario
+        // Mostramos el escenario.
         stage.show();
     }
 

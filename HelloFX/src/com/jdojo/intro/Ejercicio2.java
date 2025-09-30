@@ -46,7 +46,7 @@ public class Ejercicio2 extends Application{
         // Creamos la escena
         stage.setScene(scene);
 
-        // Mostramos la escena
+        // Mostramos la escena.
         stage.show();
 
     }
