@@ -45,7 +45,7 @@ public class Ejercicio1 extends Application {
 
 	
 	public static void main(String[] args) {
-		// Necesitamos que el main ejecute los parametros recibidos de Aapplication y los lance
+		// Necesitamos que el main ejecute los parametros recibidos de Application y los lance
 		Application.launch(args);
 	}
 
