@@ -46,7 +46,7 @@ public class Ejercicio4 extends Application {
      
     try{
     btnProbar.setOnAction(e ->{
-        intento = Integer.parseInt(tField.getText()); //"89" -> 89
+        intento = Integer.parseInt(tField.getText()); // "89" -> 89 el 89 String pasa a ser un entero 
         if (intento < numeroSecreto){ // Si es un numero menor
             nameLabel2.setText("O numero e mais alto.");
             contador++;
@@ -58,10 +58,17 @@ public class Ejercicio4 extends Application {
             nameLabel3.setText("Intentos: " + contador);
         }if(intento == numeroSecreto){ // Si el numero es correcto
             nameLabel2.setText("Correcto o numero e: " + numeroSecreto);
-            nameLabel2.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+            nameLabel2.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, null, null)));
+           // nameLabel2.setStyle("-fx-background-color: transparent;");
             contador++;
             nameLabel3.setText("Intentos: " + contador);
-    }});
+
+    }
+    else if(intento < 0 || intento > 100){
+        nameLabel2.setText("El numero está fuera de rango");
+        
+    }
+});
         btnReiniciar.setOnAction(e2 ->{
           //  start(stage) seria llamarlo recursivamente y se reiniciaria
           numeroSecreto = (int) Math.random() * 100;  
@@ -70,13 +77,14 @@ public class Ejercicio4 extends Application {
         });
         btnRendirse.setOnAction(e3 ->{
             nameLabel2.setText("O numero secreto era: " + numeroSecreto);
-            nameLabel2.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+            nameLabel2.setBackground(new Background(new BackgroundFill(Color.LIGHTCORAL, null, null)));
+         //   nameLabel2.setStyle("-fx-background-color: orange;");
+         //   nameLabel2.setStyle("-fx-background-color: transparent;");
         });
     }catch(InputMismatchException e4){
         System.out.println("Error: Debe introducir solo numeros(no letras ni simbolos)");
+
     }
-        
-        
         
     // Hacemos que el nodo(raiz) recoja a sus hijos en este caso el textfield, el label y los hijos   
     root.getChildren().addAll(nameLabel,tField,btnProbar,btnReiniciar,btnRendirse,nameLabel2,nameLabel3);
@@ -86,10 +94,8 @@ public class Ejercicio4 extends Application {
     stage.setScene(scene);    
     // Mostramos la escena
     stage.show();    
-    
-        }
 
-    
+    }
 
     public static void main(String[] args) {
         Application.launch(args);
