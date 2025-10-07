@@ -1,0 +1,12 @@
+package com.jdojo.intro;
+
+import javafx.application.Application;
+
+public class FXLifeCycleApp extends Application {
+
+	public static void main(String[] args) {
+			
+
+	}
+
+}

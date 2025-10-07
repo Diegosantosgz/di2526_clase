@@ -1,0 +1,12 @@
+INDEX VERSION 1.134+D:\Diego_Santos_Gonzalez\Interfaces\Proyectos Interfaces\.metadata\.plugins\org.eclipse.jdt.core
+856550262.index
+3899853108.index
+1865797976.index
+321174018.index
+1373924479.index
+2939402138.index
+899402329.index
+3848074168.index
+1056032519.index
+2162546791.index
+104709367.index

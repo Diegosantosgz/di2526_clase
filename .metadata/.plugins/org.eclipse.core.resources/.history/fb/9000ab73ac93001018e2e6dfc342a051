@@ -1,0 +1,63 @@
+package com.jdojo.intro;
+
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class ImprovedHelloFXApp extends Application {
+
+	public static void main(String[] args) {
+		Application.launch(args);
+	}
+
+	@Override
+	public void start(Stage stage) {
+		// Creamos un Label (etiqueta)textfield
+		Label nameLbl = new Label("Introduce tu nombre");
+		// Creamos un TextField (campo de texto)
+		TextField nameFld = new TextField();
+
+		// Esta va ser la etiqueta de la mensaje del botón
+		Label msg = new Label();
+		msg.setStyle("-fx-text-fill: blue;");
+
+		// Creamos los botones
+		Button sayHelloBtn = new Button("Decir hola");
+		Button exitBtn = new Button("Salir");
+
+		// Añadimos el controlador para el boton Decir hola
+		sayHelloBtn.setOnAction(e -> {
+			String name = nameFld.getText();
+			if (name.trim().length() > 0) {
+				msg.setText("Hola " + name);
+			} else {
+				msg.setText("Hola desconocido");
+
+			}
+		});
+		// Añadimos el controlador para el botón Salir
+		exitBtn.setOnAction(e -> Platform.exit());
+		// Creamos un nodo (raíz)
+		VBox root = new VBox();
+
+		// Con el nodo añadimos a sus hijos (El label y el textField en este caso)
+		root.getChildren().addAll(nameLbl, nameFld, msg, sayHelloBtn, exitBtn);
+
+		// Establecemos el espacio vertical entre los hijos a 5 píxeles
+		root.setSpacing(5);
+
+		// Creamos una escena y le damos tamaño
+		Scene scene = new Scene(root, 400, 100);
+		stage.setScene(scene);
+		stage.setTitle("Aplicación Hello JavaFX Mejorada");
+
+		// Mostramos el escenario
+		stage.show();
+	}
+
+}
