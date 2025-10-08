@@ -1,52 +1,72 @@
 package com.jdojo.intro;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
 public class Ejercicio7 extends Application {
 
-      public void start(Stage stage) throws Exception{
-    // Creamos un nodo (la raiz vertical)
-    VBox root = new VBox();
-    // Creamos una escena le damos el nodo y el tamaño que queremos que use, en este caso 300 x 200
-    Scene scene = new Scene(root,300,200);
+    TextArea textarea = new TextArea();
+    String fecha = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-    TextArea textTA = new TextArea();
+    public Ejercicio7() {
+        // Declaramos una variable para pasarle el nombre
+        // Usaremos el atributo fecha para pasarle la fecha directamente desde fuera del metodo
+        
+        String name = Thread.currentThread().getName();
+        textarea.appendText("[" + fecha + "] " + "O fio do constructor: " + "(" + name + ")" + "\n");
+    }
 
-    
-  
-    // Creamos 4 Label (etiquetas) para ponerles la pregunta y la respuesta
-    Label pregunta = new Label();
-   // TextField para que se introduzca la respuesta
-   TextField txField = new TextField();
-   // Un boton para enviar la respuesta
-   Button boton = new Button("Enviar resposta");
+    public void init() {
+        // Declaramos una variable para pasarle el nombre
+        // Usaremos el atributo fecha para pasarle la fecha directamente desde fuera del metodo
+        
+        String name = Thread.currentThread().getName();
+        fecha = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        textarea.appendText("[" + fecha + "] " + "O fio do init(): " + "(" + name + ")" + "\n");
+    }
 
-    
+    public void start(Stage stage) {
 
-    
-    
-    
+        stage.setTitle("Ciclo de vida con consola");
+        // Declaramos una variable para pasarle el nombre
+        // Usaremos el atributo fecha para pasarle la fecha directamente desde fuera del metodo
+        String name = Thread.currentThread().getName();
+        fecha = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        // El estilo del textArea con un margen(padding) de 5px y color de fondo claro
+        textarea.setStyle("-fx-padding: 5px; -fx-background-color:#eef;");
+        textarea.appendText("[" + fecha + "] " + "O fio do start(): " + "(" + name + ")");
+        // textarea.setText(textTA.get(2);
+        Button btnCerrar = new Button("Cerrar aplicacion");
 
-    // Hacemos que el nodo(raiz) recoja a sus hijos en orden de aparacion 
-    root.getChildren().addAll();
-    // Le ponemos un nombre a la ventana
-    stage.setTitle("Ciclo de vida con consola");
-    // creamos la escena en el escenario
-    stage.setScene(scene);    
-    // Mostramos la escena
-    stage.show();  
+        // Creamos una etiqueta y le ponemos un color de rojo
+        Label label = new Label("Pecha a aplicación e comproba na consola a mensaxe");
+        label.setStyle("-fx-text-fill: red;");
+        VBox root = new VBox();
+        root.getChildren().addAll(textarea, label, btnCerrar);
 
+        // controlar botones
+        btnCerrar.setOnAction(
+                e -> {
+                    Platform.exit();
+                });
 
-        }
-    
+        Scene scene = new Scene(root, 400, 200);
+        stage.setScene(scene);
+        stage.show();
+    }
+    // Solo hacemos que el textAREA diga "proba"
+    public void stop() {
+        textarea.appendText("Proba");
+    }
+
     public static void main(String[] args) {
         Application.launch(args);
     }
