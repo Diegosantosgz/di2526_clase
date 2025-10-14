@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Ejercicio10 extends Application {
-
+    // Declaramos un atributo contador(int) para usarlo en el boton y cuente tarea por tarea
     int contador = 1;
 
     public void start(Stage stage) {
@@ -50,7 +50,7 @@ public class Ejercicio10 extends Application {
                btnBorrar.setOnAction(e2 -> root.getChildren().remove(btnBorrar.getParent()));
                 // Añadimos el label dentro del boton debido a que es un label creado dentro del
                 // propio botón
-                //Primero ponemos los componentes que irian en horizontal
+                // Primero ponemos los componentes que irian en horizontal
                 hRoot.getChildren().addAll(box, label,btnBorrar);
                 // Y luego ponemos el root del horizontal dentro del vertical
                 root.getChildren().addAll(hRoot);

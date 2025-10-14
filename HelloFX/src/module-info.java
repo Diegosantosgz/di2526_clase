@@ -6,7 +6,8 @@ module HelloFX {
 	requires javafx.media;
 	requires javafx.web;
 	requires javafx.fxml;
-	requires jdk.jsobject;
+	
 
 	opens com.jdojo.intro to javafx.graphics, javafx.base;
+	opens com.jdojo.binding to javafx.graphics, javafx.base;
 }
