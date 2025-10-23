@@ -1,0 +1,44 @@
+package com.jdojo.binding;
+
+import java.beans.PropertyChangeEvent;
+
+public class Ejercicio12_ProductTest {
+
+//   private final static double descuento = 20;
+//   private static double total;
+
+    public static void handlePropertyChange(PropertyChangeEvent e) {
+        String propertyName = e.getPropertyName();
+        if ("price".equals(propertyName)) {
+            System.out.print("O precio cambiou");
+            System.out.print(" Anterior: " + e.getOldValue());
+            System.out.println(", Novo: " + e.getNewValue());
+            computeTax((Double) e.getNewValue());
+        }
+    }
+
+    public static void computeTax(double price) {
+        final double TAX_PERCENT = 20.0;
+        double tax = price * TAX_PERCENT / 100.0;
+        System.out.println("Precio: " + price + ", Imposto: " + tax);
+    }
+
+    public static void main(String[] args) {
+
+        final Product p1 = new Product("Maria Dolores", 2000.0);
+
+        computeTax(p1.getPrice());
+
+        p1.addPropertyChangeListener(Ejercicio12_ProductTest::handlePropertyChange);
+
+        p1.setPrice(3000.0);
+        p1.setPrice(3000.0);
+        p1.setPrice(6000.0);
+
+   /*   Product producto = new Product();
+        producto.setPrice(50.0);
+        total = descuento - producto.getPrice();
+        System.out.println("El precio del producto: " + producto.getPrice() + " con el descuento: " + descuento + " es: " + total); */
+
+    }
+}
