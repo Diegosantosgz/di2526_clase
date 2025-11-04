@@ -20,6 +20,7 @@ public class Ejercicio12_ProductTest {
     public static void computeTax(double price) {
         final double TAX_PERCENT = 20.0;
         double tax = price * TAX_PERCENT / 100.0;
+    //  double precioFinal = price - TAX_PERCENT;
         System.out.println("Precio: " + price + ", Imposto: " + tax);
     }
 
