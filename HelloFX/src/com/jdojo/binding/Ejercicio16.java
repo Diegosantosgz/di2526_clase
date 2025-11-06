@@ -41,7 +41,9 @@ public class Ejercicio16 extends Application{
     });
 
     // 6. Organizar los controles en un VBox (columna vertical) con separación de 10px
-    VBox root = new VBox(10, campoTexto, label, botonCambiar);
+    VBox root = new VBox(10);
+
+    root.getChildren().addAll(campoTexto,label,botonCambiar);
 
     // 7. Crear la escena y asignarla al escenario (ventana)
     Scene scene = new Scene(root, 300, 100);
