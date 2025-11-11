@@ -31,6 +31,7 @@ public class Ejercicio19 extends Application{
         TextField tfdescuento = new TextField();
         Label lbPrecioUnitario = new Label("Precio Unitario:");
         Label lbcantidad = new Label("Cantidad:");
+        Label lbdescuento = new Label("Descuento:");
         Label lbTotal = new Label();
         Label lbMensaje = new Label();
     
@@ -72,10 +73,10 @@ public class Ejercicio19 extends Application{
 
        
         VBox root = new VBox(10);
-        root.getChildren().addAll(lbPrecioUnitario,tfprecioUnitario,lbcantidad,tfcantidad,tfdescuento,lbTotal,lbMensaje);
-        Scene scene = new Scene(root,300,200);
+        root.getChildren().addAll(lbPrecioUnitario,tfprecioUnitario,lbcantidad,tfcantidad,lbdescuento,tfdescuento,lbTotal,lbMensaje);
+        Scene scene = new Scene(root,300,250);
         stage.setScene(scene);
-        stage.setTitle("Calculadora con Bindings unidireccionales");
+        stage.setTitle("Calculadora con Bindings bidireccionales");
         stage.show();
 
     }
