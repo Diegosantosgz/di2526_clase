@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 // Extiende Application porque necesitamos crear una interfaz gráfica
 public class Coche_Ej15 extends Application { 
 
+    // COCHE DINÁMICO CON JAVAFX
+
     // Propiedad que almacena la marca del coche (StringProperty permite "enlazar" con elementos de la interfaz)
     private StringProperty marca = new SimpleStringProperty(this,"marca","");
     

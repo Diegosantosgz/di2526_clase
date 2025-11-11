@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 public class Ejercicio16 extends Application{
 
+    // VINCULACIÓN BIDIRECCIONAL EN JAVAFX
 
     public void start(Stage stage){
 

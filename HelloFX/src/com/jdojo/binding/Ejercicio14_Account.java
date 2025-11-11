@@ -2,6 +2,8 @@ package com.jdojo.binding;
 
 public class Ejercicio14_Account {
 
+    // BINDING ENTRE PROPIEDADES
+
     public static void main(String[] args) {
 
         // Se crean dos objetos de tipo Account (dos cuentas bancarias)

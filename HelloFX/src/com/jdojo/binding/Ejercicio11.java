@@ -2,6 +2,7 @@ package com.jdojo.binding;
 
 public class Ejercicio11  {
 
+    // CREACIÓN DE UNA CLASE COCHE CON PROPIEDADES
 
     public static void main(String[] args) {
         Coche coche = new Coche();

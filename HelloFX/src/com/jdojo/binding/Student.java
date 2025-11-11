@@ -9,6 +9,8 @@ import javafx.beans.property.StringProperty;
 
 public class Student {
 
+    // CLASE STUDENT DEL EJERCICIO 13 (CREACIÓN DE UNA CLASE CON PROPIEDADES JAVAFX)
+
     private ReadOnlyStringWrapper id = new ReadOnlyStringWrapper(this, "ID", "Unknown");
     private StringProperty nome = new SimpleStringProperty(this, "nome", "Unknown");
     private DoubleProperty averageGrade = new SimpleDoubleProperty(this, "nota promedio", 0.0);

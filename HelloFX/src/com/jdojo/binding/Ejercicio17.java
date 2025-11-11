@@ -13,7 +13,8 @@ import javafx.stage.Stage;
 
 public class Ejercicio17 extends Application {
 
-    // Método principal de inicio de la interfaz gráfica
+    // CALCULADORA DE PRECIO TOTAL SIN BINDINGS (LISTENERS MANUALES)
+
     public void start(Stage stage) {
 
         // --- PROPIEDADES ---

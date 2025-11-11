@@ -4,6 +4,7 @@ import javafx.beans.property.ReadOnlyProperty;
 
 public class Ejercicio13_StudentTest {
 
+    // CREACIÓN DE UNA CLASE CON PROPIEDADES JAVAFX
     
     public static void printDetails(ReadOnlyProperty<?> p){
         String nome = p.getName();

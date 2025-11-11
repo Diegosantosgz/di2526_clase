@@ -4,6 +4,8 @@ import java.beans.PropertyChangeEvent;
 
 public class Ejercicio12_ProductTest {
 
+    // CREACION DE UNA CLASE JAVABEAN
+
 //   private final static double descuento = 20;
 //   private static double total;
 

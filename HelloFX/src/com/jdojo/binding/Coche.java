@@ -2,6 +2,8 @@ package com.jdojo.binding;
 
 public class Coche {
 
+    // CLASE COCHE DEL EJERCICIO 11 (CREACIÓN DE UNA CLASE COCHE CON PROPIEDADES)
+
     private String marca;
     private int velocidad;
 

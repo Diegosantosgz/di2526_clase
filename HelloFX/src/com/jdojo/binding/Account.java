@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 
 public class Account {
 
+    // CLASE ACCOUNT DEL EJERCICIO 14 (BINDING ENTRE PROPIEDADES)
+
     // Creamos una propiedad observable llamada 'balance'.
     // El constructor de SimpleDoubleProperty que usas tiene 3 parámetros:
     //  this → referencia al objeto propietario (esta instancia de Account)

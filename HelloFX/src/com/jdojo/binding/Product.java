@@ -5,6 +5,8 @@ import java.beans.PropertyChangeSupport;
 
 public class Product {
 
+    // CLASE PRODUCT DEL EJERCICIO 12 (CREACIÓN DE UNA CLASE JAVABEAN)
+
     private String name;
     private double price;
 
