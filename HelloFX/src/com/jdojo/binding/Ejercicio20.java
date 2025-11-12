@@ -44,7 +44,16 @@ public class Ejercicio20 extends Application{
             // Este método se ejecuta automáticamente cada vez que cambia 'numero'
             int valor = numero.get(); // Obtenemos el valor actual del número
             // Devolvemos "PAR" si es divisible por 2, o "IMPAR" si no lo es
-            return  (valor % 2 == 0) ? "PAR" : "IMPAR";
+
+            // Esto es si lo ponemos de manera ternaria
+            // return  (valor % 2 == 0) ? "PAR" : "IMPAR";
+
+            // Lo mismo pero de la manera tradicional
+            if (valor % 2 == 0){
+                return "PAR";
+            }else {
+                return "IMPAR";
+            }
         }
 
     };

@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 
 public class Ejercicio19 extends Application{
 
@@ -65,12 +66,16 @@ public class Ejercicio19 extends Application{
         });
 
         // Bindings
+        tfprecioUnitario.textProperty().bindBidirectional(precioUnitario, new NumberStringConverter());
+        tfcantidad.textProperty().bindBidirectional(cantidad, new NumberStringConverter());
+        tfdescuento.textProperty().bindBidirectional(descuento, new NumberStringConverter());
+
         DoubleBinding total = precioUnitario.multiply(cantidad).subtract(precioUnitario.multiply(cantidad).multiply(descuento.divide(100.0)));
         
-        StringBinding totalFormateado = (StringBinding) Bindings.format("Total: %.2f€", total);
-        lbTotal.textProperty().bind(totalFormateado);
+         StringBinding totalFormateado = (StringBinding) Bindings.format("Total: %.2f€", total);
+         lbTotal.textProperty().bind(totalFormateado);
         
-        lbMensaje.textProperty().bind(Bindings.when(total.greaterThan(100)).then("precio alto").otherwise(""));
+         lbMensaje.textProperty().bind(Bindings.when(total.greaterThan(100)).then("precio alto").otherwise(""));
 
        
         VBox root = new VBox(10);
