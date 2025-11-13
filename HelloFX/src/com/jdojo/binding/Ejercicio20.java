@@ -82,3 +82,13 @@ public class Ejercicio20 extends Application{
         Application.launch(args);
     }
 }
+
+
+/* Crea unha aplicación gráfica en JavaFX que:
+
+1. Teña unha propiedade IntegerProperty para almacenar un número enteiro.
+2. Mostre un campo de texto (TextField) no que o usuario poida introducir o número.
+3. Mostre nunha etiqueta (Label) se o número é PAR ou IMPAR.
+4. Para determinar a paridade, crea un binding personalizado mediante unha subclase anónima de StringBinding, ligando esta ao IntegerProperty e sobreescribindo computeValue().
+5. Establece un bind bidireccional entre o campo de texto e a propiedade IntegerProperty empregando un NumberStringConverter, de modo que ao modificar o texto se actualice o número e viceversa.
+6. Faga que a etiqueta se actualice automaticamente a PAR ou IMPAR ao cambiar o valor do número grazas ao binding. */

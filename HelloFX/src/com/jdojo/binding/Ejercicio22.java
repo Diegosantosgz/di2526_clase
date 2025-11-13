@@ -48,3 +48,31 @@ public void start(Stage stage) {
         Application.launch(args); 
     }
 }
+
+
+/* !. Contexto: que é un Slider?
+En JavaFX, un Slider é un control gráfico que permite seleccionar un valor dentro dun rango, movendo unha barra ou manilla horizontal ou vertical.
+
+Constructor principal:
+
+Slider(min, max, valorInicial)
+
+min → valor mínimo permitido.
+max → valor máximo permitido.
+valorInicial → valor no que comeza o slider.
+
+Propiedades útiles:
+
+valueProperty(): valor actual do slider (tipo DoubleProperty).
+setOrientation(Orientation.VERTICAL): pon o slider en vertical.
+setOrientation(Orientation.HORIZONTAL): pon o slider en horizontal (por defecto).
+
+Instruccións
+Crea unha aplicación JavaFx que
+
+1. Teña un slider en horizontal e outro en vertical:
+2. Ámbolos dous deben ter un rango entre 0 e 100 e un valor inicial de 40.
+3. Os Sliders deben estar sincronizados mediante un binding bidireccional.
+4. A xanela terá un tamaño de 200x150 píxeles.
+5. Mostra por consola o resultado valueProperty().isBound() de cada slider. Que resultado amosa e por que?
+*/

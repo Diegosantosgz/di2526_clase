@@ -85,3 +85,26 @@ public class Ejercicio18 extends Application{
         Application.launch(args);
     }
 }
+
+
+/* Imos modificar o exercicio anterior e en vez de usar listeners manuais empregaremos a Binding API de JavaFX para que o total se actualice automaticamente cando cambien os valores.
+
+Requisitos da interface gráfica
+
+Un campo para introducir o prezo unitario.
+Un campo para introducir a cantidade.
+Un campo para introducir un desconto en %.
+Unha etiqueta que amose o prezo total.
+O prezo total debe actualizarse automaticamente cando se cambie calquera dos tres valores.
+Mostrar unha mensaxe de "Prezo alto" se o total supera os 100€, empregando Bindings.when(...).then(...).otherwise(...).
+
+!. Pistas
+Emprega propiedades (DoubleProperty, IntegerProperty) para o prezo unitario, cantidade e desconto.
+Crea un DoubleBinding que calcule o total con desconto:
+DoubleBinding total = prezoUnitario.multiply(cantidade)
+                                 .subtract(prezoUnitario.multiply(cantidade).multiply(desconto.divide(100)));
+
+
+Formatea a saída a 2 decimais usando Bindings.format("Total: %.2f€", total) e castea a StringBinding
+Emprega Bindings.when(...).then(...).otherwise(...) para a mensaxe de prezo alto.
+Para a actualización dos campos de propiedades dependentes do textProperty() dos TextField deberás de seguir empregando listener manuais. */

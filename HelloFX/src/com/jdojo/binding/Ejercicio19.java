@@ -90,3 +90,33 @@ public class Ejercicio19 extends Application{
         Application.launch(args);
     }
 }
+
+
+/* Imos crear unha calculadora en JavaFX que permita calcular o prezo total dun artigo a partir do prezo unitario, cantidade e desconto, empregando bindings bidireccionais para conectar os campos de entrada coas propiedades do modelo.
+
+Requisitos da interface
+
+Un campo para introducir o prezo unitario.
+Un campo para introducir a cantidade.
+Un campo para introducir un desconto en %.
+Unha etiqueta que amose o prezo total formateado a 2 decimais.
+Unha etiqueta que mostre "Prezo alto" se o total supera os 100€.
+
+!. Atención
+Como se comentou no apartado 1.18 Vinculacións unidireccionais e bidireccionais, nos bindings bidireccionais, as propiedades que se conectan deben ser do mesmo tipo.
+
+Como TextField.textProperty() é un StringProperty e as nosas propiedades de modelo son DoubleProperty ou IntegerProperty, necesitamos un converter, como NumberStringConverter, para facer a conversión automática entre texto e número.
+import javafx.util.converter.NumberStringConverter;
+...
+DoubleProperty prezoUnitario = new SimpleDoubleProperty();
+TextField prezoUnitarioField = new TextField();
+
+// Binding bidireccional con conversión automática entre String e Double
+prezoUnitarioField.textProperty().bindBidirectional(prezoUnitario, new NumberStringConverter());
+
+
+!. Pistas
+Emprega bindBidirectional para conectar os TextField coas propiedades.
+Usar NumberStringConverter para a conversión automática entre texto e número.
+Usar Bindings para calcular o total e a mensaxe de "Prezo alto".
+Non empregar listeners manuais para actualizar valores. */

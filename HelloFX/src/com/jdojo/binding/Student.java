@@ -59,3 +59,36 @@ public class Student {
         return averageGrade;
     }
 }
+
+
+/* 1. Crea unha clase Student con propiedades JavaFX para id, nome e nota media.
+id (ReadOnlyStringProperty).
+nome (StringProperty).
+averageGrade (DoubleProperty).
+2. Constructores:
+Un constructor baleiro seguindo a convención JavaBeans.
+Un constructor con parámetros que inicializará id, name e averageGrade cando se instancie.
+3. Implementa os métodos públicos de acceso para:
+Para id:
+Accesor clásico getter para retrocompatibilidade (o setter non procede por ser só lectura).
+Accesor de JavaFx devolve a propiedade de só lectura (getReadOnlyProperty() do wrapper).
+Para name e averageGrade:
+Accesores clásicos getter e setter.
+Accesores JavaFx para devolver os obxecto-propiedade.
+4. Noutra clase denominada StudentTest.java:
+Implementa un método utilitario estático printDetails(ReadOnlyProperty<?> property) que para cada propiedade:
+Imprima o nome da propiedade.
+Imprima o valor actual da propiedade.
+Imprima a clase do bean.
+Nos indique o tipo concreto da propiedade.
+Método main de proba:
+Instancia un Student e dalle os valores iniciais: "S000","Descoñecido" e 0.0.
+Imprime os detalles das propiedades cos valores iniciais.
+Modifica os valores facendo uso do accesores das propiedades JavaFx (Ollo: non as clásicas).
+name = "Ana"
+averageGrade = 10.0
+Volve a imprimir os detalles das propiedades para ver os cambios.
+Intenta modificar o id facendo uso os accesor da propiedade JavaFX, ¿que ocorre?.
+Pistas:
+Usa as clases SimpleStringProperty, SimpleIntegerProperty e SimpleDoubleProperty.
+Lembra usar os métodos get(), set() e XXXProperty() para cada propiedade. */

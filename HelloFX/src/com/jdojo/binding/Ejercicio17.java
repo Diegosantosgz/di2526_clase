@@ -104,3 +104,25 @@ public class Ejercicio17 extends Application {
         Application.launch(args);
     }
 }
+
+
+
+/* Imos crear unha calculadora en JavaFX que permita calcular o prezo total dun artigo a partir do prezo unitario e da cantidade, empregando listeners manuais en lugar da API de Bindings de JavaFX.
+
+A interface gráfica terá:
+
+Un campo para introducir o prezo unitario.
+Un campo para introducir a cantidade.
+Unha etiqueta que amose o prezo total.
+O prezo total debe actualizarse automáticamente cando se cambie xa sexa o prezo unitario ou a cantidade.
+
+!. Pistas
+Usa propiedades (DoubleProperty, IntegerProperty) para gardar o prezo unitario e a cantidade.
+Engade listeners ás propiedades para recalcular o prezo total cando cambie calquera delas.
+Engade tamén listeners ao texto dos TextField (textProperty()) para converter a entrada a número e actualizar as propiedades correspondentes.
+Formatea o prezo total a 2 decimais antes de amosalo no Label.
+
+
+!. Extras
+Engadir un campo para introducir un desconto en % e aplicalo no cálculo do total.
+Amosar unha mensaxe de "Prezo alto" se o total supera os 100€ (usando un if normal, non Bindings). */
