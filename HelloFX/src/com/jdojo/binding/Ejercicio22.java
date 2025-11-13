@@ -5,6 +5,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Ejercicio22 extends Application {
@@ -32,7 +33,7 @@ public void start(Stage stage) {
                 sliderVertical.valueProperty().isBound());
 
         // Colocamos los dos sliders en un contenedor horizontal
-        HBox root = new HBox(20, sliderVertical, sliderHorizontal);
+        VBox root = new VBox(20, sliderVertical, sliderHorizontal);
         
 
         // Creamos la escena de 200x150 píxeles

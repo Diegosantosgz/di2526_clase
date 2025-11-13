@@ -21,7 +21,7 @@ public class Ejercicio23 extends Application {
         // Creamos el círculo
         Circle circle = new Circle();
         circle.setCenterX(150);           // Posición X del centro
-        circle.setCenterY(100);           // Posición Y del centro
+        circle.setCenterY(150);           // Posición Y del centro
         circle.setRadius(40);             // Radio inicial
         circle.setFill(Color.ANTIQUEWHITE); // Color de relleno
         circle.setStroke(Color.BLACK);    // Color del borde

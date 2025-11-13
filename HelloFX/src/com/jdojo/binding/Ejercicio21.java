@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -22,6 +23,9 @@ public class Ejercicio21 extends Application {
 
         // Establecemos el fondo vacío (sin color por defecto)
         root.setBackground(null);
+
+        // tamen podemos usar esto: 
+        // root.setBackground(Background.EMPTY);
 
         // Creamos la escena con el contenedor y tamaño 300x250
         Scene scene = new Scene(root, 300, 250);
