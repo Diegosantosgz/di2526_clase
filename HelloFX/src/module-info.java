@@ -11,4 +11,6 @@ module HelloFX {
 
 	opens com.jdojo.intro to javafx.graphics, javafx.base;
 	opens com.jdojo.binding to javafx.graphics, javafx.base;
+	opens Santos_Diego to javafx.graphics, javafx.base;
+	opens com.jdojo.stage to javafx.graphics, javafx.base;
 }

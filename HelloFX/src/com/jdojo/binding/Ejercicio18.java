@@ -19,68 +19,131 @@ public class Ejercicio18 extends Application{
     // CALCULADORA CON BINDINGS UNIDIRECCIONALES
 
     public void start(Stage stage){
-        
-        // Propiedades
-        DoubleProperty precioUnitario = new SimpleDoubleProperty();
-        DoubleProperty descuento = new SimpleDoubleProperty();
-        IntegerProperty cantidad = new SimpleIntegerProperty();
-       
+    // Método principal de la interfaz. Aquí se arma toda la ventana.
 
-        // Controles
-        TextField tfprecioUnitario = new TextField();
-        TextField tfcantidad = new TextField();
-        TextField tfdescuento = new TextField();
-        Label lbPrecioUnitario = new Label("Precio Unitario:");
-        Label lbcantidad = new Label("Cantidad:");
-        Label lbdescuento = new Label("Descuento:");
-        Label lbTotal = new Label();
-        Label lbMensaje = new Label();
+    // Propiedades (almacenan valores numéricos observables)
+    DoubleProperty precioUnitario = new SimpleDoubleProperty();
+    // Propiedad double para guardar el precio unitario.
+
+    DoubleProperty descuento = new SimpleDoubleProperty();
+    // Propiedad double para guardar el descuento (%).
+
+    IntegerProperty cantidad = new SimpleIntegerProperty();
+    // Propiedad int para guardar la cantidad de productos.
 
 
-        // Listeners 
+    // Controles (elementos visuales)
+    TextField tfprecioUnitario = new TextField();
+    // Campo donde se escribe el precio unitario.
 
-        tfprecioUnitario.textProperty().addListener((obs,viejoValor,nuevoValor) -> {
-            try {
-                precioUnitario.set(Double.parseDouble(nuevoValor));
-            } catch (NumberFormatException ex){
-                precioUnitario.set(0);
-            }
-        });
+    TextField tfcantidad = new TextField();
+    // Campo donde se escribe la cantidad.
 
-        tfdescuento.textProperty().addListener((obs, viejoValor, nuevoValor) -> {
-            try {
-                descuento.set(Double.parseDouble(nuevoValor));
-            } catch (NumberFormatException ex) {
-                descuento.set(0);
-            }
-        });
-        
-        tfcantidad.textProperty().addListener((obs,viejoValor,nuevoValor) -> {
-            try {
-                cantidad.set(Integer.parseInt(nuevoValor));
-            }catch (NumberFormatException ex){
-                cantidad.set(0);
-            }
-        });
+    TextField tfdescuento = new TextField();
+    // Campo donde se escribe el descuento.
 
-        // Bindings
-        DoubleBinding total = precioUnitario.multiply(cantidad).subtract(precioUnitario.multiply(cantidad).multiply(descuento.divide(100.0)));
-        
-        StringBinding totalFormateado = (StringBinding) Bindings.format("Total: %.2f€", total);
-        lbTotal.textProperty().bind(totalFormateado);
-        
-        lbMensaje.textProperty().bind(Bindings.when(total.greaterThan(100)).then("precio alto").otherwise(""));
+    Label lbPrecioUnitario = new Label("Precio Unitario:");
+    // Etiqueta para identificar el campo del precio.
 
-       
-        VBox root = new VBox(10);
-        root.getChildren().addAll(lbPrecioUnitario,tfprecioUnitario,lbcantidad,tfcantidad,lbdescuento,tfdescuento,lbTotal,lbMensaje);
-        Scene scene = new Scene(root,300,250);
-        stage.setScene(scene);
-        stage.setTitle("Calculadora con Bindings unidireccionales");
-        stage.show();
+    Label lbcantidad = new Label("Cantidad:");
+    // Etiqueta para identificar el campo de cantidad.
+
+    Label lbdescuento = new Label("Descuento:");
+    // Etiqueta para identificar el campo del descuento.
+
+    Label lbTotal = new Label();
+    // Aquí se mostrará el total calculado.
+
+    Label lbMensaje = new Label();
+    // Aquí se mostrará un mensaje si el total supera 100.
 
 
-    }
+    // LISTENERS (se ejecutan cuando cambia el texto de un TextField)
+    tfprecioUnitario.textProperty().addListener((obs,viejoValor,nuevoValor) -> {
+        // Listener para precio unitario
+        try {
+            precioUnitario.set(Double.parseDouble(nuevoValor));
+            // Convierte el texto a double y lo guarda.
+        } catch (NumberFormatException ex){
+            precioUnitario.set(0);
+            // Si el usuario escribe algo no numérico, se usa 0.
+        }
+    });
+
+    tfdescuento.textProperty().addListener((obs, viejoValor, nuevoValor) -> {
+        // Listener para descuento
+        try {
+            descuento.set(Double.parseDouble(nuevoValor));
+            // Convierte el texto a número.
+        } catch (NumberFormatException ex) {
+            descuento.set(0);
+            // Si falla, pone 0.
+        }
+    });
+    
+    tfcantidad.textProperty().addListener((obs,viejoValor,nuevoValor) -> {
+        // Listener para cantidad
+        try {
+            cantidad.set(Integer.parseInt(nuevoValor));
+            // Intenta convertir a entero.
+        }catch (NumberFormatException ex){
+            cantidad.set(0);
+            // Si falla, usa 0.
+        }
+    });
+
+
+    // BINDINGS UNIDIRECCIONALES
+    // Se calcula el total automáticamente a partir de las propiedades.
+
+    DoubleBinding total = precioUnitario.multiply(cantidad)
+                        .subtract(precioUnitario.multiply(cantidad)
+                        .multiply(descuento.divide(100.0)));
+    // Fórmula:
+    // total = precioUnitario * cantidad - (precioUnitario * cantidad * descuento/100)
+
+
+    StringBinding totalFormateado = (StringBinding) Bindings.format("Total: %.2f€", total);
+    // Formatea el total en un String con dos decimales.
+
+    lbTotal.textProperty().bind(totalFormateado);
+    // La etiqueta mostrará siempre el total actualizado.
+
+
+    lbMensaje.textProperty().bind(
+        Bindings.when(total.greaterThan(100))
+        .then("precio alto")
+        .otherwise("")
+    );
+    // Si el total > 100 muestra "precio alto", si no muestra vacío.
+
+
+    // Layout visual (VBox = elementos en columna)
+    VBox root = new VBox(10);
+    // VBox con espacio de 10 píxeles entre elementos.
+
+    root.getChildren().addAll(
+        lbPrecioUnitario, tfprecioUnitario,
+        lbcantidad, tfcantidad,
+        lbdescuento, tfdescuento,
+        lbTotal, lbMensaje
+    );
+    // Agrega los controles al layout.
+
+
+    Scene scene = new Scene(root,300,250);
+    // Crea la escena con tamaño 300x250 px.
+
+    stage.setScene(scene);
+    // Coloca la escena dentro de la ventana.
+
+    stage.setTitle("Calculadora con Bindings unidireccionales");
+    // Título de la ventana.
+
+    stage.show();
+    // Muestra la ventana al usuario.
+}
+
     public static void main(String[] args) {
         Application.launch(args);
     }

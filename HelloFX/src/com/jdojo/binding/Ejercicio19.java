@@ -21,25 +21,27 @@ public class Ejercicio19 extends Application{
 
     public void start(Stage stage){
         
-        // Propiedades
+        // Propiedades (valores numéricos que se pueden enlazar a controles)
         DoubleProperty precioUnitario = new SimpleDoubleProperty();
         DoubleProperty descuento = new SimpleDoubleProperty();
         IntegerProperty cantidad = new SimpleIntegerProperty();
        
 
-        // Controles
+        // Controles de interfaz
         TextField tfprecioUnitario = new TextField();
         TextField tfcantidad = new TextField();
         TextField tfdescuento = new TextField();
         Label lbPrecioUnitario = new Label("Precio Unitario:");
         Label lbcantidad = new Label("Cantidad:");
         Label lbdescuento = new Label("Descuento:");
-        Label lbTotal = new Label();
-        Label lbMensaje = new Label();
+        Label lbTotal = new Label();      // Aquí se mostrará el total calculado
+        Label lbMensaje = new Label();    // Mensaje adicional según el total
     
 
 
-        // Listeners 
+        // Listeners para validar la entrada de texto en los TextField
+        // Cuando cambie el texto, intenta convertirlo a número
+        // Si falla, coloca 0 para evitar errores
 
         tfprecioUnitario.textProperty().addListener((obs,viejoValor,nuevoValor) -> {
             try {
@@ -65,21 +67,34 @@ public class Ejercicio19 extends Application{
             }
         });
 
-        // Bindings
+        // Bindings bidireccionales: 
+        // El valor del TextField y la propiedad siempre se mantienen sincronizados.
         tfprecioUnitario.textProperty().bindBidirectional(precioUnitario, new NumberStringConverter());
         tfcantidad.textProperty().bindBidirectional(cantidad, new NumberStringConverter());
         tfdescuento.textProperty().bindBidirectional(descuento, new NumberStringConverter());
 
-        DoubleBinding total = precioUnitario.multiply(cantidad).subtract(precioUnitario.multiply(cantidad).multiply(descuento.divide(100.0)));
+        // Binding para calcular el total:
+        // total = precioUnitario * cantidad - (precioUnitario * cantidad * descuento/100)
+        DoubleBinding total = precioUnitario.multiply(cantidad)
+                             .subtract(precioUnitario.multiply(cantidad)
+                             .multiply(descuento.divide(100.0)));
         
-         StringBinding totalFormateado = (StringBinding) Bindings.format("Total: %.2f€", total);
-         lbTotal.textProperty().bind(totalFormateado);
+        // Binding para formatear el total como texto con dos decimales
+        StringBinding totalFormateado = (StringBinding) Bindings.format("Total: %.2f€", total);
+        lbTotal.textProperty().bind(totalFormateado);
         
-         lbMensaje.textProperty().bind(Bindings.when(total.greaterThan(100)).then("precio alto").otherwise(""));
+        // Mostrar mensaje si el total supera 100
+        lbMensaje.textProperty().bind(
+            Bindings.when(total.greaterThan(100))
+            .then("precio alto")
+            .otherwise("")
+        );
 
        
+        // Distribución visual
         VBox root = new VBox(10);
         root.getChildren().addAll(lbPrecioUnitario,tfprecioUnitario,lbcantidad,tfcantidad,lbdescuento,tfdescuento,lbTotal,lbMensaje);
+        
         Scene scene = new Scene(root,300,250);
         stage.setScene(scene);
         stage.setTitle("Calculadora con Bindings bidireccionales");
