@@ -26,7 +26,7 @@ public class CenteredAStage extends Application {
 		double y = bounds.getMinY() + (bounds.getHeight() - stage.getHeight()) / 2.0;
 		stage.setX(x);
 		stage.setY(y);
-        ç
+        
 	
         
 		System.out.println("Despois do show(): width=" + stage.getWidth() + ", height=" + stage.getHeight());
