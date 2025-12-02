@@ -29,12 +29,16 @@ public class Ejercicio1 extends Application {
 
 
         boton.setOnAction(e -> {
+            double x = Double.parseDouble(tfx.getText());
+            double y = Double.parseDouble(tfy.getText());
+
             if(Integer.parseInt(tfx.getText()) < 0 || Integer.parseInt(tfx.getText()) > primaryScreen.getWidth()){
                 resuLabel.setText("ERROR mal");
             } else if (Integer.parseInt(tfy.getText()) < 0 || Integer.parseInt(tfy.getText()) > primaryScreen.getHeight()){
                 resuLabel.setText("ERROR mal");
             }else {
-                
+                stage.setX(x);
+                stage.setY(y);
                 System.out.println("Todo funciona correctamente");
             }
         });
