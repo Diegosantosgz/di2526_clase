@@ -7,64 +7,66 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.paint.Color;
+import static javafx.stage.StageStyle.*;
+
+
 
 public class Ejercicio4 extends Application {
 
-    public void start(Stage stage) {
+    @Override
+    public void start(Stage stage) throws Exception {
 
-        Button btnDecorated = new Button("DECORATED");
-        Button btnUndecorated = new Button("UNDECORATED");
-        Button btnTransparent = new Button("TRANSPARENT");
-        Button btnUtility = new Button("UTILITY");
-        Button btnUnified = new Button("UNIFIED");
+        Button decoredBtn = new Button("DECORATED");
+        Button undecoredBtn = new Button("UNDECORATED");
+        Button transparentBtn = new Button("TRANSPARENT");
+        Button utilityBtn = new Button("UTILITY");
+        Button unifiedBtn = new Button("UNIFIED");
 
+        // Manejar las acciones de los botones llamando al metodo
+        decoredBtn.setOnAction(e -> abrirVentana(DECORATED));
+        undecoredBtn.setOnAction(e -> abrirVentana(UNDECORATED));
+        transparentBtn.setOnAction(e -> abrirVentana(TRANSPARENT));
+        utilityBtn.setOnAction(e -> abrirVentana(UTILITY));
+        unifiedBtn.setOnAction(e -> abrirVentana(UNIFIED));
 
-        btnDecorated.setOnAction(e -> abrirVentana(DECORATED));
-        btnDecorated.setOnAction(e -> abrirVentana(UNDECORATED));
-        btnDecorated.setOnAction(e -> abrirVentana(TRANSPARENT));
-        btnDecorated.setOnAction(e -> abrirVentana(UTILITY));
-        btnDecorated.setOnAction(e -> abrirVentana(UNIFIED));
-
-
-        
-
-        btnUndecorated.setOnAction(e ->{
-
-        });
-        
-        btnTransparent.setOnAction(e ->{
-
-        });
-        btnUtility.setOnAction(e -> {
-
-        });
-        btnUnified.setOnAction(e ->{
-
-        });
-
-    
-
-        VBox root = new VBox(10);
+        // el VBox y el scene principal
+        VBox root = new VBox(10, decoredBtn, undecoredBtn, transparentBtn, utilityBtn, unifiedBtn);
         Scene scene = new Scene(root, 300, 200);
+        stage.setTitle("Gestor de estilos de Stage");
         stage.setScene(scene);
         stage.show();
     }
-    
-        private void abrirVentana(StageStyle estilo){
-                Stage secundario = new Stage();
-                secundario.initStyle(estilo);
 
-                Label estiloLbl = new Label();
-                estiloLbl.setText(estilo.toString());
+    // Metodo para abrir una nueva ventana cuando al pulsar en un boton de la escena
+    // principal
+    private void abrirVentana(StageStyle estilo) {
+        Stage secundario = new Stage();
+        secundario.initStyle(estilo); // Llamarlo siempre antes del show
 
-                Button btnPechar = new Button("Pechar");
-                btnPechar.setOnAction(e -> secundario.close());
+        Label estiloLb = new Label();
+        estiloLb.setText(estilo.toString());
 
-                VBox root = new VBox(10,estiloLbl,btnPechar);
-                
-        
-    }   
-        
+        Button cerrarBtn = new Button("Cerrar");
+        cerrarBtn.setOnAction(e -> secundario.close());
+
+        VBox layout = new VBox(10, estiloLb, cerrarBtn);
+        Scene escena = new Scene(layout, 300, 200);
+
+        if (estilo == TRANSPARENT) {
+            // Hacer la escena transparente
+            escena.setFill(null);
+
+            // Aplicar estilo CSS transparente al nodo raiz
+            escena.getRoot().setStyle("-fx-background-color: transparent");
+        } else if (estilo == UNIFIED) {
+            escena.setFill(Color.TRANSPARENT);
+        }
+
+        secundario.setScene(escena);
+        secundario.show();
+
+    }
 
     public static void main(String[] args) {
         Application.launch(args);
